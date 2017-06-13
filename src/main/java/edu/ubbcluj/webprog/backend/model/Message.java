@@ -15,12 +15,10 @@ public class Message {
 
     @OneToOne
     @JoinColumn(name = "from")
-    @Column(name="from")
     private User from;
 
     @OneToOne
     @JoinColumn(name = "to")
-    @Column(name="to")
     private User to;
 
     @Column(name="subject")

@@ -14,7 +14,7 @@ apply plugin: 'application'
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
-mainClassName = "edu.ubbcluj.webprog.HelloWorld"
+mainClassName = "edu.ubbcluj.webprog.StandaloneApplication"
 
 sourceCompatibility = 1.8
 
@@ -30,5 +30,6 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-security")
     // end::security[]
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile('mysql:mysql-connector-java')
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

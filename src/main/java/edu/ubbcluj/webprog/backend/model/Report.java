@@ -22,7 +22,6 @@ public class Report {
 
     @ManyToOne
     @JoinColumn(name = "taskid")
-    @Column(name="taskid")
     private Task task;
 
     public Report() {

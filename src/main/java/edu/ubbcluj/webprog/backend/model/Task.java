@@ -29,12 +29,10 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "eventid")
-    @Column(name="eventid")
     private Event event;
 
     @ManyToOne
     @JoinColumn(name = "userid")
-    @Column(name="userid")
     private User user;
 
     @OneToMany(mappedBy = "task")
