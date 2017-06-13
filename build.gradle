@@ -1,0 +1,34 @@
+group 'edu.ubbcluj.webprog'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
+    }
+}
+
+apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+mainClassName = "edu.ubbcluj.webprog.HelloWorld"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    // tag::security[]
+    compile("org.springframework.boot:spring-boot-starter-security")
+    // end::security[]
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
