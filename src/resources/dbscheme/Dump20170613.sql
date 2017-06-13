@@ -76,7 +76,10 @@ CREATE TABLE `report` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `text` text,
   `date` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `taskid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_report_1_idx` (`taskid`),
+  CONSTRAINT `fk_report_1` FOREIGN KEY (`taskid`) REFERENCES `task` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -101,9 +104,14 @@ CREATE TABLE `task` (
   `title` varchar(45) DEFAULT NULL,
   `description` text,
   `state` int(11) DEFAULT NULL,
-  `reportid` int(11) DEFAULT NULL,
   `deadline` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `eventid` int(11) DEFAULT NULL,
+  `userid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_task_1_idx` (`eventid`),
+  KEY `fk_task_2_idx` (`userid`),
+  CONSTRAINT `fk_task_1` FOREIGN KEY (`eventid`) REFERENCES `event` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_task_2` FOREIGN KEY (`userid`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -153,4 +161,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-13 20:32:25
+-- Dump completed on 2017-06-13 21:20:37
