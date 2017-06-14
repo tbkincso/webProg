@@ -3,13 +3,15 @@ package edu.ubbcluj.webprog.backend.service;
 import edu.ubbcluj.webprog.backend.model.Task;
 import edu.ubbcluj.webprog.backend.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by kincso on 14.06.2017.
  */
+@Service
 public class TaskService {
 
-    /*private final TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
 
     @Autowired
     public TaskService(TaskRepository taskRepository) {
@@ -28,5 +30,5 @@ public class TaskService {
 
     public void delete(Task task) {
 
-    }*/
+    }
 }
