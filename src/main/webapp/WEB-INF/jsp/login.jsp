@@ -1,20 +1,33 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+        pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Login Page - EventOrganiser</title>
+    <title>EventOrganiser</title>
+    <link href="resources/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/tether.min.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/js/jquery-3.2.1.min.js"></script>
+    <script src="resources/js/tether.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 <body>
-<h1>Welcome to EventOrganiser!</h1>
+<h1>Bejelentkezés</h1>
 <form method="post" action="login.do">
-    <label>Username:</label>
-    <input id="username" name="username"><br>
-    <br><label>Password:</label>
-    <input id="password" name="password" type="password"><br>
-    <br><input type="submit" value="Login">
+    <table class="table">
+        <tr>
+            <td><label>Felhasználónév:</label></td>
+            <td><input id="username" name="username"></td>
+        </tr>
+        <tr>
+            <td><label>Jelszó:</label></td>
+            <td><input id="password" name="password" type="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Bejelentkezés"></td>
+        </tr>
+    </table>
 </form>
 <p>${message}</p>
 </body>
