@@ -24,11 +24,11 @@ public class ReportService {
         return reportRepository;
     }
 
-    public void insert(Report task) {
-
+    public void save(Report report) {
+        reportRepository.save(report);
     }
 
-    public void delete(Report task) {
-
+    public void delete(Report report) {
+        reportRepository.delete(report);
     }
 }

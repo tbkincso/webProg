@@ -23,11 +23,11 @@ public class MessageService {
         return messageRepository;
     }
 
-    public void insert(Message task) {
-
+    public void save(Message message) {
+        messageRepository.save(message);
     }
 
-    public void delete(Message task) {
-
+    public void delete(Message message) {
+        messageRepository.delete(message);
     }
 }

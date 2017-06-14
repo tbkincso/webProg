@@ -24,11 +24,11 @@ public class TaskService {
         return taskRepository;
     }
 
-    public void insert(Task task) {
-
+    public void save(Task task) {
+        taskRepository.save(task);
     }
 
     public void delete(Task task) {
-
+        taskRepository.delete(task);
     }
 }

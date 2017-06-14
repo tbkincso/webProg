@@ -24,11 +24,11 @@ public class EventService {
         return eventRepository;
     }
 
-    public void insert(Event task) {
-
+    public Event save(Event event) {
+        return eventRepository.save(event);
     }
 
-    public void delete(Event task) {
-
+    public void delete(Event event) {
+        eventRepository.delete(event);
     }
 }
