@@ -5,6 +5,8 @@ import edu.ubbcluj.webprog.backend.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by kincso on 14.06.2017.
  */
@@ -30,5 +32,9 @@ public class EventService {
 
     public void delete(Event event) {
         eventRepository.delete(event);
+    }
+
+    public List<Event> listAllEvents() {
+        return eventRepository.findAll();
     }
 }

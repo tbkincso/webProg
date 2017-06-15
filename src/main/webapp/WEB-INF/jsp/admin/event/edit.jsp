@@ -1,20 +1,17 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Home Page</title>
-    <link href="/resources/css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
-    <link href="/resources/css/bootstrap/tether.min.css" type="text/css" rel="stylesheet"/>
-    <link href="/resources/css/custom.css" type="text/css" rel="stylesheet"/>
-    <script src="/resources/js/jquery/jquery-3.2.1.min.js"></script>
-    <script src="/resources/js/bootstrap/tether.js"></script>
-    <script src="/resources/js/bootstrap/bootstrap.min.js"></script>
+    <title>EventOrganiser</title>
+        <link href="/resources/css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+        <link href="/resources/css/bootstrap/tether.min.css" type="text/css" rel="stylesheet"/>
+        <link href="/resources/css/custom.css" type="text/css" rel="stylesheet"/>
+        <script src="/resources/js/jquery/jquery-3.2.1.min.js"></script>
+        <script src="/resources/js/bootstrap/tether.js"></script>
+        <script src="/resources/js/bootstrap/bootstrap.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 <body>
@@ -23,7 +20,7 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Home</a>
+        <a class="navbar-brand" href="${contextPath}/admin/profile">Home</a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -51,6 +48,8 @@
             </p>
         </div>
     </nav>
+
+<p>Edit page</p>
 
 </body>
 </html>
