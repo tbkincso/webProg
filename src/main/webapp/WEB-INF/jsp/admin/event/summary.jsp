@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>EventOrganiser</title>
+    <title>EventOrganizer</title>
         <link href="/resources/css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
         <link href="/resources/css/bootstrap/tether.min.css" type="text/css" rel="stylesheet"/>
         <link href="/resources/css/custom.css" type="text/css" rel="stylesheet"/>
@@ -28,10 +28,10 @@
                 <a class="nav-link" href="${contextPath}/admin/event/events">Events<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="${contextPath}/admin/user/users">Users</a>
+                <a class="nav-link" href="${contextPath}/admin/organizer/organizers">Organizers</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Messages</a>
+                <a class="nav-link" href="${contextPath}/admin/message/messages">Messages</a>
               </li>
             </ul>
         </div>

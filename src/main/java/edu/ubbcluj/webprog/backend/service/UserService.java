@@ -1,11 +1,13 @@
 package edu.ubbcluj.webprog.backend.service;
 
+import edu.ubbcluj.webprog.backend.model.Event;
 import edu.ubbcluj.webprog.backend.model.User;
 import edu.ubbcluj.webprog.backend.repository.UserRepository;
 import edu.ubbcluj.webprog.backend.util.EncryptData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -38,11 +40,19 @@ public class UserService {
         return this.userRepository.findByUsername(username);
     }
 
+    public User getUserById(int id) {
+        return this.userRepository.findOne(id);
+    }
+
     public boolean isValidUser(User user) {
         String password = EncryptData.encrypt(user.getPassword());
         Optional<User> authenticatedUser = userRepository
                 .getByUserNameAndPassword(user.getUserName(), password);
         return authenticatedUser.isPresent();
+    }
+
+    public List<User> listAllUsers() {
+        return userRepository.findAll();
     }
 
 

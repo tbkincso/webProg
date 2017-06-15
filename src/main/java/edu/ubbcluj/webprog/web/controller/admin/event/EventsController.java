@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/admin/event/events")
-public class EventController {
+public class EventsController {
 
     @Autowired
     private EventService eventService;
@@ -32,27 +32,22 @@ public class EventController {
         model.addObject("list", list);
         return model;
     }
-    @RequestMapping(method = RequestMethod.POST, params = { "selected" })
-    public void selected(@RequestParam("selected") String name, HttpSession session, Model model) {
-        System.out.println("SELECTED");
-        System.out.println(name);
 
-        //session.setAttribute("selectedEvent", );
+    @RequestMapping(method = RequestMethod.POST, params = { "selected"})
+    public void select(@RequestParam("selected") String title, HttpSession session) {
+        session.setAttribute("selectedEvent",eventService.getByTitle(title).get().getId());
     }
 
-   @RequestMapping(method = RequestMethod.POST, params = { "edit" })
-    public String edit(HttpSession session, Model model) {
-       System.out.println("EDIT");
-
-        //session.setAttribute("selectedEvent", );
+   @RequestMapping(method = RequestMethod.POST, params = { "edit"})
+    public String edit( HttpSession session, Model model) {
         return "redirect:/admin/event/edit";
     }
 
     @RequestMapping(method = RequestMethod.POST, params = { "delete" })
     public ModelAndView delete(HttpSession session) {
-        //session.setAttribute("selectedEvent", );
-        System.out.println("DELETE");
-        //delete
+        int selectedEventId = (int)session.getAttribute("selectedEvent");
+        //delete from childs
+        //eventService.delete(eventService.getById(selectedEventId)); //nem mukodik, torolni kene minden gyerektablabol
         List<String> list = getListOfEvents();
         ModelAndView model = new ModelAndView("admin/event/events");
         model.addObject("list", list);
@@ -61,8 +56,6 @@ public class EventController {
 
     @RequestMapping(method = RequestMethod.POST, params = { "summary" })
     public String summary(HttpSession session, Model model) {
-        //session.setAttribute("selectedEvent", );
-        System.out.println("SUMMARY");
         return "redirect:/admin/event/summary";
     }
 

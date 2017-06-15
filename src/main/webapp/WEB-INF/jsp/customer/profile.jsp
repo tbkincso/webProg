@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>EventOrganiser</title>
+    <title>EventOrganizer</title>
     <link href="/resources/css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
     <link href="/resources/css/bootstrap/tether.min.css" type="text/css" rel="stylesheet"/>
     <link href="/resources/css/custom.css" type="text/css" rel="stylesheet"/>
@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="#">Events<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Tasks<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Messages</a>

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>EventOrganiser</title>
+    <title>EventOrganizer</title>
     <link href="resources/css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
     <link href="resources/css/bootstrap/tether.min.css" type="text/css" rel="stylesheet"/>
     <link href="resources/css/custom.css" type="text/css" rel="stylesheet"/>

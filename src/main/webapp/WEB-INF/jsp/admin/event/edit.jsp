@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>EventOrganiser</title>
+    <title>EventOrganizer</title>
         <link href="/resources/css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
         <link href="/resources/css/bootstrap/tether.min.css" type="text/css" rel="stylesheet"/>
         <link href="/resources/css/custom.css" type="text/css" rel="stylesheet"/>
@@ -28,10 +28,10 @@
                 <a class="nav-link" href="${contextPath}/admin/event/events">Events<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="${contextPath}/admin/user/users">Users</a>
+                <a class="nav-link" href="${contextPath}/admin/organizer/organizers">Organizers</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Messages</a>
+                <a class="nav-link" href="${contextPath}/admin/message/messages">Messages</a>
               </li>
             </ul>
         </div>
@@ -49,7 +49,73 @@
         </div>
     </nav>
 
-<p>Edit page</p>
+    <form method="post" action="edit">
+    <table>
+        <tr>
+            <th>
+                <h1>Edit event</h1>
+            </th>
+        </tr>
+        <tr>
+           <td><label>Title:</label></td>
+           <td><textarea type="submit" name="title">${title}</textarea></td>
+        </tr>
+        <tr>
+           <td><label>Description:</label></td>
+           <td><textarea type="submit" name="description">${description}</textarea></td>
+        </tr>
+         <tr>
+            <td colspan="2">
+               <button type="button" class="btn btn-default" data-toggle="modal" data-target="#largeShoes">Add Task</button>
 
+               <!-- The modal -->
+               <div class="modal fade" id="largeShoes" tabindex="-1" role="dialog" aria-labelledby="modalLabelLarge" aria-hidden="true">
+               <div class="modal-dialog modal-lg">
+                   <div class="modal-content">
+                       <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                               <span aria-hidden="true">&times;</span>
+                           </button>
+                           <h4 class="modal-title" id="modalLabelLarge">New Task</h4>
+                       </div>
+                       <div class="modal-body">
+                           <table>
+                               <tr>
+                                   <td>
+                                       <label>Title:</label>
+                                   </td>
+                                   <td>
+                                       <input name="taskTitle">
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>
+                                       <label>Description:</label>
+                                   </td>
+                                   <td>
+                                       <textarea id="taskDescription" name="description" maxlength="500" rows="5"></textarea>
+                                   </td>
+                               </tr>
+                               <tr>
+                                   <td>
+                                       <label>Deadline:</label>
+                                   </td>
+                                   <td>
+                                      <input type="text" name="deadline" />
+                                   </td>
+                               </tr>
+                           </table>
+                       </div>
+
+                   </div>
+               </div>
+               </div>
+            </td>
+        </tr>
+        <tr>
+          <td colspan="2"><input class = "btn btn-default" type="submit" value="Edit"></td>
+        </tr>
+       </table>
+       </form>
 </body>
 </html>

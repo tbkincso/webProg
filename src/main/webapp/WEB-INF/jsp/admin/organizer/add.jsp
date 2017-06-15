@@ -1,13 +1,11 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>EventOrganizer</title>
     <link href="/resources/css/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet"/>
     <link href="/resources/css/bootstrap/tether.min.css" type="text/css" rel="stylesheet"/>
@@ -23,7 +21,7 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Home</a>
+        <a class="navbar-brand" href="${contextPath}/admin/profile">Home</a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -52,5 +50,42 @@
         </div>
     </nav>
 
+     <form method="post" action="add">
+           <table class="table custom-table">
+                   <tr>
+                       <th colspan="2">
+                           <h1>Add new organizer</h1>
+                       </th>
+                   </tr>
+                   <c:if test="${not empty errorMsg}">
+                   <tr>
+                       <td colspan="2"><div class = "alert alert-danger">${errorMsg}</div></td>
+                   </tr>
+                   </c:if>
+                   <tr>
+                       <td><label>Username*:</label></td>
+                       <td><input name="username"></td>
+                   </tr>
+                   <tr>
+                       <td><label>First name*:</label></td>
+                       <td><input name="firstname"></td>
+                   </tr>
+                   <tr>
+                       <td><label>Last name*:</label></td>
+                       <td><input name="lastname"></td>
+                   </tr>
+                   <tr>
+                       <td><label>Password*:</label></td>
+                       <td><input type="password" name="password"></td>
+                   </tr>
+                   <tr>
+                       <td><label>Telephone:</label></td>
+                       <td><input name="telephone"></td>
+                   </tr>
+                   <tr>
+                       <td colspan="2"><input class = "btn btn-default" type="submit" value="Add"></td>
+                   </tr>
+           </table>
+       </form>
 </body>
 </html>

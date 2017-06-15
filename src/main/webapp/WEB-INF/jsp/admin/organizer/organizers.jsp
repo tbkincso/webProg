@@ -29,7 +29,7 @@
                 <a class="nav-link" href="${contextPath}/admin/event/events">Events<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="${contextPath}/admin/organizer/organizers">Organizers</a>
+                <a class="nav-link" href="${contextPath}/admin/organizers/organizers">Organizers</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="${contextPath}/admin/message/messages">Messages</a>
@@ -50,20 +50,20 @@
         </div>
     </nav>
 
-<form method="post" action="events">
+<form method="post" action="organizers">
     <table class="table custom-table">
         <tr>
             <th>
-                <h1>Events</h1>
+                <h1>Organizers</h1>
             </th>
         </tr>
         <tr>
             <td>
                 <div class="container">
                 <c:if test="${not empty list}">
-                     <select multiple class="form-control" name="selected" onchange="this.form.submit()">
+                     <select multiple class="form-control" id="sel2">
                         <c:forEach var="listValue" items="${list}">
-                         <option><p class="text-info">${listValue}</p></option>
+                            <option name="selected"><p class="text-info">${listValue}</p></option>
                         </c:forEach>
                      </select>
                 </c:if>
@@ -76,14 +76,12 @@
 
                     <input type="submit" class="btn btn-secondary" name="edit" value="Edit">
                     <input type="submit" class="btn btn-secondary" name="delete" value="Delete">
-                    <input type="submit" class="btn btn-secondary" name="summary" value="Summary">
-
                 </div>
              </td>
          </tr>
          <tr>
             <td>
-                <input class = "btn btn-default" type="submit" name="newEvent" value="Add new event">
+                <input class = "btn btn-default" type="submit" name="newOrganizer" value="Add new organizer">
             </td>
          </tr>
      </table>

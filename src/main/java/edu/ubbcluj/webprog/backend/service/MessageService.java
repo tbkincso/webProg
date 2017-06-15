@@ -5,6 +5,8 @@ import edu.ubbcluj.webprog.backend.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by kincso on 14.06.2017.
  */
@@ -29,5 +31,9 @@ public class MessageService {
 
     public void delete(Message message) {
         messageRepository.delete(message);
+    }
+
+    public List<Message> listMessages() {
+        return messageRepository.findAll();
     }
 }
