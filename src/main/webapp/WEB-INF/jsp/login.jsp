@@ -18,7 +18,7 @@
 <form method="post" action="login">
     <table class="table custom-table">
         <tr>
-            <td colspan="2"><h1>Bejelentkezés</h1></td>
+            <td colspan="2"><h1>Login</h1></td>
         </tr>
         <c:if test="${not empty errorMsg}">
             <tr>
@@ -26,15 +26,15 @@
             </tr>
         </c:if>
         <tr>
-            <td><label>Felhasználónév:</label></td>
+            <td><label>Username:</label></td>
             <td><input id="username" name="username"></td>
         </tr>
         <tr>
-            <td><label>Jelszó:</label></td>
+            <td><label>Password:</label></td>
             <td><input id="password" name="password" type="password"></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Bejelentkezés"></td>
+            <td colspan="2"><input class = "btn btn-default" type="submit" value="Login"></td>
         </tr>
     </table>
 </form>

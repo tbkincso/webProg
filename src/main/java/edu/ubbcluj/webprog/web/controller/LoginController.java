@@ -24,7 +24,8 @@ public class LoginController {
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String login() {
+    public String login(HttpSession session) {
+        session.setAttribute("authenticated", false);
         return "login";
     }
 
@@ -41,6 +42,7 @@ public class LoginController {
             Optional<User> authenticatedUser = userService.getByUsername(user.getUserName());
             session.setAttribute("authenticated", true);
             session.setAttribute("role", authenticatedUser.get().getRole());
+            session.setAttribute("name", authenticatedUser.get().getFirstName());
             if (authenticatedUser.get().getRole() == 1) {
                 return "redirect:/admin/profile";
             }
