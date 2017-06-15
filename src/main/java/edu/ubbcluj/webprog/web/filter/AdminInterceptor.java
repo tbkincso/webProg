@@ -19,7 +19,8 @@ public class AdminInterceptor implements HandlerInterceptor {
         Boolean auth = false;
         int role = 0;
 
-        if(request.getSession().getAttribute("authenticated") != null) {
+        if(request.getSession().getAttribute("authenticated") != null &&
+                request.getSession().getAttribute("role") != null) {
             auth = (Boolean)request.getSession().getAttribute("authenticated");
             role = (int)request.getSession().getAttribute("role");
         }
