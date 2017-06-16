@@ -32,7 +32,7 @@ public class User {
     @Column(name="telephone")
     private String telephone;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Task> taskList;
 
     public User() {

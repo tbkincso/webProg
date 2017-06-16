@@ -14,7 +14,6 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 <body>
-    <body>
 
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +43,9 @@
             </p>
         </div>
     </nav>
+    <div >
+        <img class="img" src="/resources/img/background.jpg">
+    </div
 
-    </body>
 </body>
 </html>

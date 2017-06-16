@@ -31,7 +31,8 @@ public class DemoDataCreator {
     @PostConstruct
     public void createDemoData() {
         createAdmin();
-        createUser();
+        createUser("kincso", "Kincso", "Tuzes", "kincso", "0777555888");
+        createUser("esztike", "Eszter", "Wincs", "esztike", "0777555888");
         createEvents();
         System.out.println("Demo data has been created successfully!");
     }
@@ -47,14 +48,14 @@ public class DemoDataCreator {
         userService.save(user);
     }
 
-    private void createUser() {
+    private void createUser(String userName, String firstName, String lastName, String pwd, String phone) {
         User user = new User();
-        user.setFirstName("Kincso");
-        user.setLastName("Tuzes");
-        user.setUserName("kincso");
-        user.setPassword("kincso");
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setUserName(userName);
+        user.setPassword(pwd);
         user.setRole(2);
-        user.setTelephone("0856044588");
+        user.setTelephone(phone);
         userService.save(user);
     }
 

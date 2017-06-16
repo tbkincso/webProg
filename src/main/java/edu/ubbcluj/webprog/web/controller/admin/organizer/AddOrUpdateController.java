@@ -15,37 +15,46 @@ import javax.servlet.http.HttpSession;
  * Created by kincso on 15.06.2017.
  */
 @Controller
-@RequestMapping("/admin/organizer/add")
-public class addController {
+@RequestMapping("/admin/organizer/addOrUpdate")
+public class AddOrUpdateController {
     @Autowired
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String handleGet(HttpSession session) {
-        return "/admin/organizer/add";
+        return "/admin/organizer/addOrUpdate";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String handlePost(@RequestParam("username") String username,
+    public String handlePost(@RequestParam("id") String idString,
+                             @RequestParam("username") String username,
                              @RequestParam("firstname") String firstname,
                              @RequestParam("lastname") String lastname,
                              @RequestParam("password") String password,
                              @RequestParam("telephone") String telephone,
-                             ModelMap model,
-                             HttpSession session) {
+                             ModelMap model) {
         if (username.equals("") || firstname.equals("") || lastname.equals("") || password.equals("")) {
             model.addAttribute("errorMsg", "The fields marked with * must be filled!");
-            return "/admin/organizer/add";
+            return "/admin/organizer/addOrUpdate";
         }
         if (telephone.length() != 10 && telephone.length() != 0) {
             model.addAttribute("errorMsg", "Incorrect phone number (it must contain 10 numbers, ex. 0744056888!");
-            return "/admin/organizer/add";
+            return "/admin/organizer/addOrUpdate";
         }
         if (!telephone.matches("[0-9]*")) {
             model.addAttribute("errorMsg", "Incorrect phone number, it must contain olny numbers!");
-            return "/admin/organizer/add";
+            return "/admin/organizer/addOrUpdate";
         }
+
+        int id;
+        try {
+            id = Integer.parseInt(idString);    //in this case update
+        } catch (NumberFormatException ex) {
+            id = 0;                             //in this case it will save
+        }
+
         User user = new User();
+        user.setId(id);
         user.setUserName(username);
         user.setLastName(lastname);
         user.setFirstName(firstname);

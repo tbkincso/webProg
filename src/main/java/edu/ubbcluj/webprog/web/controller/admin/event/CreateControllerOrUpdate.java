@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpSession;
-
 /**
  * Created by kincso on 15.06.2017.
  */
@@ -29,19 +27,17 @@ public class CreateControllerOrUpdate {
     public String handlePost(@RequestParam("id") String idString,
                              @RequestParam("title") String title,
                              @RequestParam("description") String description,
-                             ModelMap model,
-                             HttpSession session) {
+                             ModelMap model) {
         if(description.length() > 256) {
             model.addAttribute("errorMsg", "Description length must be less than 256 characters!");
             return "admin/event/createOrUpdate";
         }
 
         int id;
-
         try {
-            id = Integer.parseInt(idString);    //update
+            id = Integer.parseInt(idString);    //in this case update
         } catch (NumberFormatException ex) {
-            id = 0; //in this case it will save
+            id = 0;                             //in this case it will save
         }
 
         Event event = new Event();

@@ -3,18 +3,15 @@ package edu.ubbcluj.webprog.web.controller.admin.event;
 import edu.ubbcluj.webprog.backend.common.dto.DataPoints;
 import edu.ubbcluj.webprog.backend.common.dto.Point;
 import edu.ubbcluj.webprog.backend.model.Event;
-import edu.ubbcluj.webprog.backend.model.Task;
 import edu.ubbcluj.webprog.backend.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -28,7 +25,7 @@ public class EventsController {
     private EventService eventService;
 
     @RequestMapping(method = RequestMethod.GET, value="/events")
-    public ModelAndView getEvents(HttpSession session) {
+    public ModelAndView getEvents() {
         List<Event> eventList = eventService.listAllEvents();
         ModelAndView model = new ModelAndView("/admin/event/events");
         model.addObject("list", eventList);

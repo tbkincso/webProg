@@ -6,10 +6,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <jsp:include page="common/header.jsp" />
-    </head>
-    <body>
-        <jsp:include page="common/menu.jsp" />
-    </body>
+<jsp:include page="common/header.jsp" />
+<body>
+    <jsp:include page="common/menu.jsp" />
+     <div>
+        <img class="img" src="/resources/img/background.jpg">
+    </div
+</body>
 </html>
