@@ -2,3 +2,14 @@
     width: 60%;
     margin: auto;
 }
+
+.userLoginData {
+    width:250px;
+}
+
+.page {
+    width: 800px;
+    margin:30px auto;
+    border: 1px solid #ccc;
+    padding:10px 15px;
+}

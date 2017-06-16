@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by kincso on 13.06.2017.
@@ -24,6 +25,8 @@ public class DemoDataCreator {
 
     @Autowired
     private EventService eventService;
+
+    private Random random = new Random();
 
     @PostConstruct
     public void createDemoData() {
@@ -61,6 +64,7 @@ public class DemoDataCreator {
         task.setDeadline(new Date(2017,10,17));
         task.setDescription("Minions ipsum daa tank yuuu! Poopayee poulet tikka masala ti aamoo! Me want bananaaa!");
         task.setEvent(event);
+        task.setState(random.nextInt(4));
         taskService.save(task);
     }
 

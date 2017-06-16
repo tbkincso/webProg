@@ -1,75 +1,75 @@
 package edu.ubbcluj.webprog.web.controller.admin.event;
 
+import edu.ubbcluj.webprog.backend.common.dto.DataPoints;
+import edu.ubbcluj.webprog.backend.common.dto.Point;
 import edu.ubbcluj.webprog.backend.model.Event;
+import edu.ubbcluj.webprog.backend.model.Task;
 import edu.ubbcluj.webprog.backend.service.EventService;
-import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by kincso on 15.06.2017.
  */
 @Controller
-@RequestMapping("/admin/event/events")
+@RequestMapping("/admin/event")
 public class EventsController {
 
     @Autowired
     private EventService eventService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, value="/events")
     public ModelAndView getEvents(HttpSession session) {
-        List<String> list = getListOfEvents();
-        ModelAndView model = new ModelAndView("admin/event/events");
-        model.addObject("list", list);
-        return model;
-    }
-
-    @RequestMapping(method = RequestMethod.POST, params = { "selected"})
-    public void select(@RequestParam("selected") String title, HttpSession session) {
-        session.setAttribute("selectedEvent",eventService.getByTitle(title).get().getId());
-    }
-
-   @RequestMapping(method = RequestMethod.POST, params = { "edit"})
-    public String edit( HttpSession session, Model model) {
-        return "redirect:/admin/event/edit";
-    }
-
-    @RequestMapping(method = RequestMethod.POST, params = { "delete" })
-    public ModelAndView delete(HttpSession session) {
-        int selectedEventId = (int)session.getAttribute("selectedEvent");
-        //delete from childs
-        //eventService.delete(eventService.getById(selectedEventId)); //nem mukodik, torolni kene minden gyerektablabol
-        List<String> list = getListOfEvents();
-        ModelAndView model = new ModelAndView("admin/event/events");
-        model.addObject("list", list);
-        return model;
-    }
-
-    @RequestMapping(method = RequestMethod.POST, params = { "summary" })
-    public String summary(HttpSession session, Model model) {
-        return "redirect:/admin/event/summary";
-    }
-
-    @RequestMapping(method = RequestMethod.POST, params = { "newEvent" })
-    public String newEvent(HttpSession session, Model model) {
-        return "redirect:/admin/event/create";
-    }
-
-    private List<String> getListOfEvents() {
         List<Event> eventList = eventService.listAllEvents();
-        List<String> list = new ArrayList<String>();
-        for (Event event:eventList) {
-            list.add(event.getTitle());
+        ModelAndView model = new ModelAndView("/admin/event/events");
+        model.addObject("list", eventList);
+        return model;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public ModelAndView view(@PathVariable int id) {
+        ModelAndView model = new ModelAndView("/admin/event/view");
+        model.addObject("event", eventService.getById(id));
+        return model;
+    }
+
+   @RequestMapping(method = RequestMethod.GET, value = "/edit/{id}")
+    public ModelAndView edit(@PathVariable int id) {
+       ModelAndView model = new ModelAndView("/admin/event/createOrUpdate");
+       model.addObject("event", eventService.getById(id));
+       return model;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/delete/{id}")
+    public String delete(@PathVariable int id) {
+        eventService.delete(eventService.getById(id));
+        return "redirect:/admin/event/events";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/summary/{id}")
+    public ModelAndView summary(@PathVariable int id) {
+        ModelAndView model = new ModelAndView("/admin/event/summary");
+        model.addObject("event", eventService.getById(id));
+        return model;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/summaryData/{id}")
+    public @ResponseBody
+    DataPoints getSummaryData(@PathVariable int id) {
+        Event event = eventService.getById(id);
+        DataPoints dataPoints = new DataPoints();
+        for (int i=0; i < event.getTaskList().size(); i++) {
+            dataPoints.addPoint(new Point(i, event.getTaskList().get(i).getState()));
         }
-        return list;
+        return dataPoints;
     }
 }

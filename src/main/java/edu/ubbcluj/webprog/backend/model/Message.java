@@ -14,12 +14,12 @@ public class Message {
     private int id;
 
     @OneToOne
-    @JoinColumn(name = "from")
-    private User from;
+    @JoinColumn(name = "fromCustomer")
+    private User fromCustomer;
 
     @OneToOne
-    @JoinColumn(name = "to")
-    private User to;
+    @JoinColumn(name = "toCustomer")
+    private User toCustomer;
 
     @Column(name="subject")
     private String subject;
@@ -38,20 +38,20 @@ public class Message {
         this.id = id;
     }
 
-    public User getFrom() {
-        return from;
+    public User getFromCustomer() {
+        return fromCustomer;
     }
 
-    public void setFrom(User from) {
-        this.from = from;
+    public void setFromCustomer(User fromCustomer) {
+        this.fromCustomer = fromCustomer;
     }
 
-    public User getTo() {
-        return to;
+    public User getToCustomer() {
+        return toCustomer;
     }
 
-    public void setTo(User to) {
-        this.to = to;
+    public void setToCustomer(User toCustomer) {
+        this.toCustomer = toCustomer;
     }
 
     public String getSubject() {

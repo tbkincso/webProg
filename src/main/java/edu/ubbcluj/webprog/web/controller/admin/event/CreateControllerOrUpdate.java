@@ -15,29 +15,41 @@ import javax.servlet.http.HttpSession;
  * Created by kincso on 15.06.2017.
  */
 @Controller
-@RequestMapping("/admin/event/create")
-public class CreateController {
+@RequestMapping("/admin/event/createOrUpdate")
+public class CreateControllerOrUpdate {
     @Autowired
     private EventService eventService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String handleGet(HttpSession session) {
-        return "admin/event/create";
+    public String handleGet() {
+        return "admin/event/createOrUpdate";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String handlePost(@RequestParam("title") String title,
+    public String handlePost(@RequestParam("id") String idString,
+                             @RequestParam("title") String title,
                              @RequestParam("description") String description,
                              ModelMap model,
                              HttpSession session) {
         if(description.length() > 256) {
             model.addAttribute("errorMsg", "Description length must be less than 256 characters!");
-            return "admin/event/create";
+            return "admin/event/createOrUpdate";
         }
+
+        int id;
+
+        try {
+            id = Integer.parseInt(idString);    //update
+        } catch (NumberFormatException ex) {
+            id = 0; //in this case it will save
+        }
+
         Event event = new Event();
+        event.setId(id);
         event.setTitle(title);
         event.setDescription(description);
         eventService.save(event);
+
         return "redirect:/admin/event/events";
     }
 

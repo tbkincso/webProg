@@ -34,7 +34,7 @@ public class MessagesController {
         List<Message> messageList = messageService.listMessages();
         List<String> list = new ArrayList<String>();
         for (Message message:messageList) {
-            String from = "From: " + message.getFrom().getFirstName() + message.getFrom().getLastName() + "\n";
+            String from = "From: " + message.getFromCustomer().getFirstName() + message.getFromCustomer().getLastName() + "\n";
             //String subject = "Subject: " + message.getSubject() + "\n";
             list.add(from);
         }
